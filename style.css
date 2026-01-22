@@ -1,0 +1,416 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Skip link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #1d2757;
+    color: white;
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Main content layout */
+main {
+    display: grid;
+    gap: 30px;
+}
+
+#interactive-section {
+    display: block;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Chart container */
+.chart-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+}
+
+#temperature-chart {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    min-width: 400px;
+}
+
+/* Chart styles */
+.chart-background {
+    fill: #f8f9fa;
+    stroke: #dee2e6;
+    stroke-width: 2;
+}
+
+.grid-line {
+    stroke: #e9ecef;
+    stroke-width: 1;
+    stroke-dasharray: 3, 3;
+}
+
+.axis-line {
+    stroke: #333;
+    stroke-width: 2;
+}
+
+.axis-text {
+    font-family: inherit;
+    font-size: 12px;
+    fill: #333;
+}
+
+.axis-label {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    fill: #333;
+}
+
+/* Atmospheric layer styles */
+.layer-troposphere {
+    fill: rgba(135, 206, 250, 0.3);
+}
+
+.layer-stratosphere {
+    fill: rgba(255, 182, 193, 0.3);
+}
+
+.layer-mesosphere {
+    fill: rgba(221, 160, 221, 0.3);
+}
+
+.layer-thermosphere {
+    fill: rgba(255, 228, 181, 0.3);
+}
+
+.layer-boundary {
+    stroke: #666;
+    stroke-width: 1;
+    stroke-dasharray: 5, 5;
+}
+
+/* Temperature curve */
+.temperature-curve {
+    fill: none;
+    stroke: #007bff;
+    stroke-width: 3;
+    filter: drop-shadow(0 2px 4px rgba(0, 123, 255, 0.3));
+}
+
+/* Interactive points */
+.data-point {
+    fill: #007bff;
+    stroke: #fff;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.data-point:hover,
+.data-point:focus {
+    fill: #0056b3;
+    stroke: #007bff;
+    stroke-width: 3;
+    r: 8;
+    filter: drop-shadow(0 2px 8px rgba(0, 123, 255, 0.5));
+}
+
+.data-point.active {
+    fill: #dc3545;
+    stroke: #fff;
+    stroke-width: 3;
+    r: 8;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        filter: drop-shadow(0 2px 4px rgba(220, 53, 69, 0.3));
+    }
+
+    50% {
+        filter: drop-shadow(0 4px 8px rgba(220, 53, 69, 0.6));
+    }
+
+    100% {
+        filter: drop-shadow(0 2px 4px rgba(220, 53, 69, 0.3));
+    }
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    max-width: 200px;
+}
+
+/* Control buttons */
+.chart-controls {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.btn:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.btn:focus {
+    outline: 2px solid #80bdff;
+    outline-offset: 2px;
+}
+
+.btn-secondary {
+    background: #6c757d;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* Info panel */
+.info-panel {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #d13138;
+    margin-bottom: 20px;
+}
+
+.info-panel h2 {
+    color: #1d2757;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.layer-info {
+    margin-bottom: 15px;
+}
+
+.layer-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.layer-stats {
+    display: grid;
+    gap: 5px;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* Data table styles */
+#data-table-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#data-table-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.data-table caption {
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.data-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.data-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.data-table tbody tr:focus-within {
+    background: #e3f2fd;
+    outline: 2px solid #007bff;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .data-point {
+        stroke-width: 3;
+    }
+
+    .temperature-curve {
+        stroke-width: 4;
+    }
+
+    .chart-background {
+        fill: white;
+        stroke: black;
+        stroke-width: 3;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    #interactive-section {
+        gap: 20px;
+    }
+
+    .chart-container {
+        overflow-x: auto;
+    }
+
+    #temperature-chart {
+        min-width: 600px;
+    }
+
+    .chart-controls {
+        flex-wrap: wrap;
+    }
+
+    .data-table {
+        font-size: 0.85rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .info-panel {
+        padding: 15px;
+    }
+
+    #data-table-section {
+        padding: 20px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chart-controls {
+        display: none;
+    }
+
+    .info-panel,
+    .data-table {
+        page-break-inside: avoid;
+    }
+}
