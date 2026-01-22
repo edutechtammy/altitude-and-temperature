@@ -65,6 +65,34 @@ The interactive is hosted on GitHub Pages: [Live Demo](https://[your-username].g
 - **Hosting**: GitHub Pages compatible
 - **Dependencies**: None - completely self-contained
 
+## 🎨 Graphics Development
+
+### Working with SVG Graphics
+The project includes visual elements like mountains and clouds to help students connect atmospheric layers to real-world experience.
+
+#### File Structure
+- `raw-graphics-files/` - Source files for graphics development
+  - `chart-template.svg` - Template with exact chart dimensions and coordinates for Illustrator
+- `assets/` - Final SVG files used in the interactive (created after graphics are finalized)
+
+#### Graphics Workflow
+1. **Open Template**: Use `raw-graphics-files/chart-template.svg` in Adobe Illustrator
+2. **Design Elements**: Add mountains, clouds, and other visual anchors
+   - Ground level: y="550" (0 km altitude)
+   - Troposphere area: y="490" to y="550" (0-12 km)
+   - Chart width: x="100" to x="700"
+3. **Export Graphics**: Save individual elements as separate SVG files
+4. **Final Placement**: Place finished SVGs in `assets/` directory
+   - `assets/mountains.svg` - Ground-level mountain silhouettes
+   - `assets/clouds.svg` - Troposphere cloud formations
+5. **Integration**: Update `script.js` to include new graphics in chart rendering
+
+#### Design Guidelines
+- Keep graphics simple and educational
+- Use colors that complement the existing atmospheric layer colors
+- Ensure graphics don't obscure data points or temperature curve
+- Design for scalability (SVG format maintains quality at all sizes)
+
 ## 📖 Educational Use
 
 ### Discussion Points

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="clouds.svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <path d="M639.92,536.66c-6.94.53-19.23,1.07-25.63,0-2.11-.35-3-6.01-3-8.01,0-1.6,3-6.41,3-6.41,0,0-3.6-2.15-3-8.01.16-1.59,3-6.41,3-6.41,0,0-2.83-3.92-3-5.34-.39-3.28,4.1-4.27,3-5.34-4.03-3.91-5.87-7.48-5.87-7.48h67.29s-15.22,7.08-18.69,8.01c-5.47,1.47-17.09,1.6-17.09,1.6,0,0,4.02,2.27,4,4.81-.02,3.65-4,5.34-4,5.34,0,0,3.97,2.8,4,3.74.23,6.29-4,7.48-4,7.48,0,0,3,5.21,3,6.94,0,2.27-.62,8.9-3,9.08Z" fill="#bab9b9" stroke="#000" stroke-miterlimit="10"/>
+  <line x1="617.29" y1="536.29" x2="623.04" y2="548.44" fill="none" stroke="#4e8fcc" stroke-miterlimit="10"/>
+  <line x1="620.29" y1="536.29" x2="626.04" y2="548.44" fill="none" stroke="#4e8fcc" stroke-miterlimit="10"/>
+  <line x1="623.29" y1="536.29" x2="629.04" y2="548.44" fill="none" stroke="#4e8fcc" stroke-miterlimit="10"/>
+  <line x1="626.29" y1="536.29" x2="632.04" y2="548.44" fill="none" stroke="#4e8fcc" stroke-miterlimit="10"/>
+  <line x1="629.29" y1="536.29" x2="635.04" y2="548.44" fill="none" stroke="#4e8fcc" stroke-miterlimit="10"/>
+  <line x1="632.29" y1="536.29" x2="638.04" y2="548.44" fill="none" stroke="#4e8fcc" stroke-miterlimit="10"/>
+  <line x1="635.29" y1="536.29" x2="641.04" y2="548.44" fill="none" stroke="#4e8fcc" stroke-miterlimit="10"/>
+  <line x1="638.29" y1="536.29" x2="644.04" y2="548.44" fill="none" stroke="#4e8fcc" stroke-miterlimit="10"/>
+</svg>

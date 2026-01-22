@@ -106,10 +106,11 @@ class AtmosphericTemperatureChart {
         this.drawTemperatureCurve();
         this.drawDataPoints();
         this.drawLabels();
+        this.drawGraphics();
     }
 
     clearChart() {
-        ['grid-lines', 'axes', 'atmosphere-layers', 'temperature-curve', 'interactive-points', 'labels']
+        ['grid-lines', 'axes', 'atmosphere-layers', 'temperature-curve', 'interactive-points', 'labels', 'graphics']
             .forEach(id => {
                 const element = document.getElementById(id);
                 if (element) element.innerHTML = '';
@@ -315,6 +316,64 @@ class AtmosphericTemperatureChart {
             text.textContent = boundary.name;
             labelsGroup.appendChild(text);
         });
+    }
+
+    async drawGraphics() {
+        const graphicsGroup = document.getElementById('graphics');
+
+        // Load and display clouds
+        try {
+            const response = await fetch('./assets/clouds.svg');
+            const svgText = await response.text();
+            const parser = new DOMParser();
+            const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+            const svgElement = svgDoc.querySelector('svg');
+
+            // Extract the content (everything except the root svg element)
+            const cloudGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            cloudGroup.setAttribute('id', 'clouds');
+            cloudGroup.setAttribute('opacity', '0.6');
+
+            // Copy all child elements from the loaded SVG
+            while (svgElement.firstChild) {
+                cloudGroup.appendChild(svgElement.firstChild);
+            }
+
+            // Lighten the cloud color after loading
+            const cloudPaths = cloudGroup.querySelectorAll('path, polygon, ellipse, circle');
+            cloudPaths.forEach(path => {
+                const fill = path.getAttribute('fill');
+                if (fill === '#bab9b9') {
+                    path.setAttribute('fill', '#d4d4d4'); // Lighter gray
+                }
+            });
+
+            graphicsGroup.appendChild(cloudGroup);
+        } catch (error) {
+            console.log('Could not load clouds.svg:', error);
+        }
+
+        // Load and display mountains (if available)
+        try {
+            const response = await fetch('./assets/mountains.svg');
+            const svgText = await response.text();
+            const parser = new DOMParser();
+            const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+            const svgElement = svgDoc.querySelector('svg');
+
+            const mountainGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            mountainGroup.setAttribute('id', 'mountains');
+            mountainGroup.setAttribute('opacity', '0.7');
+
+            // Copy all child elements from the loaded SVG
+            while (svgElement.firstChild) {
+                mountainGroup.appendChild(svgElement.firstChild);
+            }
+
+            graphicsGroup.appendChild(mountainGroup);
+        } catch (error) {
+            console.log('Mountains.svg not found (optional):', error);
+        }
     }
 
     addInteractivity() {
