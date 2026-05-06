@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Adobe Illustrator / source files
+*.ai
+*.eps
+
+# Thumbnails
+._*
